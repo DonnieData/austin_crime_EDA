@@ -1,5 +1,5 @@
 # austin_crime_EDA
-Exploratory data anaylsis of austin crime data. 
+Exploratory data analysis of austin crime data. 
 
 
 
