@@ -4,7 +4,7 @@ Exploratory data analysis of austin crime data.
 
 
 
-##Resources 
+## Resources 
 
 
 
