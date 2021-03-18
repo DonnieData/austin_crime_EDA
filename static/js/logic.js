@@ -26,13 +26,20 @@ d3.csv("https://raw.githubusercontent.com/DonnieData/austin_crime_EDA/main/loc_f
     // create initial map view 
     var map = L.map('mapid').setView([30.26548193884994, -97.74588441015467], 13);
     // create map layer 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+
+// function to style markers
+    var styleInfo = {
+    
+            opacity: 1,
+            radius: 8,
+            
+       
+    }
 
     // loop through location object and create markers 
     for (var i = 0; i < locData.length; i++) {
-        marker = new L.marker([locData[i]['latitude'], locData[i]['longitude']])
+        marker = new L.circle([locData[i]['latitude'], locData[i]['longitude']],styleInfo)
         .bindPopup(locData[i]['incident_report_number'])
         .addTo(map);
     };
