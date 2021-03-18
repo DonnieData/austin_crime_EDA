@@ -3,21 +3,38 @@ console.log("working");
 
 //load data 
 d3.csv("https://raw.githubusercontent.com/DonnieData/austin_crime_EDA/main/loc_frame.csv").then(function(data) {
-    const locData = data;
+    const locData =  data;
 
     //test output 
     console.log(locData[0]);
+    console.log(locData[16])
+    
+    console.log(locData[0]['incident_report_number'])
+
+    var latLong = locData.map(function(i) {
+        return {
+            latitude: i.latitude,
+            longitude: i.longitude
+            
+        };
+    });
+
+    console.log(latLong);
+    console.log(latLong[16])
+    console.log(latLong[16]['latitude'])
+
+    var map = L.map('mapid').setView([30.26548193884994, -97.74588441015467], 13);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
 
 
+    for (var i = 0; i < locData.length; i++) {
+        marker = new L.marker([locData[i]['latitude'], locData[i]['longitude']])
+        .bindPopup(locData[i]['incident_report_number'])
+        .addTo(map);
+    };
 
 });
 
-var map = L.map('mapid').setView([51.505, -0.09], 13);
-
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(map);
-
-L.marker([51.5, -0.09]).addTo(map)
-    .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
-    .openPopup();
