@@ -3,7 +3,7 @@ console.log("working");
 
 //Map Setup
 
-// create map layer 
+// create tile layers
 let streets = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
 
 // Create map object and add default layer
