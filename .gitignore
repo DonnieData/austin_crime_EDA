@@ -1,6 +1,9 @@
 #adding config.py
 config.py
 
+#adding dataa viz folder 
+data_visualization_extracts/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
