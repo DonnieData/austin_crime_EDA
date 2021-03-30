@@ -6,9 +6,10 @@
 }
 
 #heat1 {
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;;
+  overflow-y: scroll;
+    overflow-x: hidden;
+    display: inline-block;
+    height: 400px;
 
   
 
