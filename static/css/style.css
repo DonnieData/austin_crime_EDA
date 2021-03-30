@@ -6,12 +6,13 @@
 }
 
 #heat1 {
-  overflow-y: scroll;
-    overflow-x: hidden;
-    display: inline-block;
-    height: 400px;
+  /* for responsiveness with plotly, strict parameters are needed, and for overlfow*/
+  overflow-y: auto;
+  /* set to auto, chart should fit in div, if not scroll bar display*/
+  overflow-x: hidden;
+  display: inline-block;
+  height: 400px;
 
-  
 
 }
 

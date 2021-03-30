@@ -30,16 +30,17 @@ d3.csv(url).then(function(data) {
         x: day, 
         y: hour,
         type: 'heatmap',
-        hoverongaps: false
+        hoverongaps: false,
+     
     }];
-
-    var layout = {
-        width: 800,
-        height: 400,
-        autosize: true
-    };
     
-    Plotly.newPlot('heat1', heatData, layout);
+    //place holder 
+    var layout = {
+       };
+    
+    var config = {responsive: true}
+
+    Plotly.newPlot('heat1', heatData, layout, config);
 
 });
 
