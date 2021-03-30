@@ -2,7 +2,7 @@
 console.log("working");
 
 //load data 
-const url = "https://raw.githubusercontent.com/DonnieData/austin_crime_EDA/main/test_data/all_crime_day.csv"
+const url = 'https://raw.githubusercontent.com/DonnieData/austin_crime_EDA/main/test_data/all_crime_day.csv'
 
 d3.csv(url).then(function(data) {
     var grData =  data; 
@@ -17,7 +17,7 @@ d3.csv(url).then(function(data) {
     });
 
     var hour = grData.map(function(i){
-        return String(i.hour)
+        return i.hour
     });
     
     console.log(hour)
@@ -26,6 +26,24 @@ d3.csv(url).then(function(data) {
     });
 
     var heatData = [{
+        z: countGr.reverse(),
+        x: day.reverse(), 
+        y: hour.reverse(),
+        type: 'heatmap',
+        hoverongaps: false,
+        colorscale:'YlGnBu'
+     
+    }];
+
+    //place holder 
+    var heatlayout = {
+       };
+    
+    var config = {responsive: true}
+
+    Plotly.newPlot('heat1', heatData, heatlayout, config);
+
+    var heatData2 = [{
         z: countGr,
         x: day, 
         y: hour,
@@ -33,14 +51,11 @@ d3.csv(url).then(function(data) {
         hoverongaps: false,
      
     }];
-    
-    //place holder 
-    var layout = {
-       };
-    
-    var config = {responsive: true}
 
-    Plotly.newPlot('heat1', heatData, layout, config);
+    var heat2layout = {
+    };
+ 
+    Plotly.newPlot('heat2', heatData2, heat2layout, config);
 
 });
 

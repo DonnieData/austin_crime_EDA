@@ -12,8 +12,13 @@
   overflow-x: hidden;
   display: inline-block;
   height: 400px;
+}
 
-
+#heat2 {
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: inline-block;
+  height: 400px;
 }
 
 /* legend created through javascript, not hardcoded in index */
