@@ -7,7 +7,7 @@ const url = "https://raw.githubusercontent.com/DonnieData/austin_crime_EDA/main/
 d3.csv(url).then(function(data) {
     var grData =  data; 
 
-    // extract data features
+    // extract and assign data features to variables 
     var day = grData.map(function(i){
         return i.day
     });
@@ -33,7 +33,13 @@ d3.csv(url).then(function(data) {
         hoverongaps: false
     }];
 
-    Plotly.newPlot('heat1', heatData);
+    var layout = {
+        width: 800,
+        height: 400,
+        autosize: true
+    };
+    
+    Plotly.newPlot('heat1', heatData, layout);
 
 });
 
