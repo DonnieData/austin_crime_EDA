@@ -41,10 +41,9 @@ d3.csv("https://raw.githubusercontent.com/DonnieData/austin_crime_EDA/main/loc_f
     var locData =  data;
 
     //test output 
-    console.log(locData[0]);
-    console.log(locData[16])
-    
-    console.log(locData[0]['incident_report_number'])
+    //console.log(locData[0]);
+    //console.log(locData[16])  
+    //console.log(locData[0]['incident_report_number'])
 
     var latLong = locData.map(function(i) {
         return {
@@ -54,9 +53,9 @@ d3.csv("https://raw.githubusercontent.com/DonnieData/austin_crime_EDA/main/loc_f
         };
     });
     // test object structure 
-    console.log(latLong);
-    console.log(latLong[16])
-    console.log(latLong[16]['latitude'])
+    //console.log(latLong);
+    //console.log(latLong[16])
+    //console.log(latLong[16]['latitude'])
 
 
 // function to style markers
