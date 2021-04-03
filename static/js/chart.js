@@ -49,12 +49,22 @@ d3.csv(url).then(function(data) {
     Plotly.newPlot('heat1', heatData, heatlayout, config);
 
 
+    // heat map subplots 
+    console.log(typeof grData[3]['year'])
+    console.log(grData[3]['year'])
+    var day18 = grData.map(i => {if (i.year == "2018"){return i.day }});
+    var count18 = grData.map(i => {if (i.year == "2018"){return i.count }});
+    var hour18 = grData.map(i => {if (i.year == "2018"){ return i.hour }});
 
-    var day18 = grData.map(i => {if (i.year = 2018.0) return i.day });
-    var count18 = grData.map(i => {if (i.year = 2018.0) return i.count });
-    var hour18 = grData.map(i => {if (i.year = 2018.0) return i.hour });
+    var day19 = grData.map(i => {if (i.year == "2019"){ return i.day }});
+    var count19 = grData.map(i => {if (i.year == "2019"){ return i.count }});
+    var hour19 = grData.map(i => {if (i.year == "2019"){ return i.hour }});
 
-    console.log(hour18)
+    var day20 = grData.map(i => {if (i.year == "2020"){return i.day }});
+    var count20 = grData.map(i => {if (i.year == "2020"){ return i.count }});
+    var hour20 = grData.map(i => {if (i.year == "2020"){ return i.hour }});
+
+       
     
     var heat2018 = {
         z: count18,
@@ -63,28 +73,61 @@ d3.csv(url).then(function(data) {
         type: 'heatmap',
         hoverongaps: false,
         colorscale:'YlGnBu',
-        reversescale: true
+        reversescale: true,
+        name: '2018'
 
     };
 
-    var heat2018Copy = {
-        z: count18,
-        x: day18,
-        y: hour18,
+    var heat2019 = {
+        z: count19,
+        x: day19,
+        y: hour19,
+        xaxis: 'x2',
+        yaxis: 'y2',
         type: 'heatmap',
         hoverongaps: false,
         colorscale:'YlGnBu',
-        reversescale: true
+        reversescale: true,
+        name: '2019',
+        showscale: false,
+    
+    };
+
+    var heat2020 = {
+        z: count20,
+        x: day20,
+        y: hour20,
+        xaxis: 'x3',
+        yaxis: 'y3',
+        type: 'heatmap',
+        hoverongaps: false,
+        colorscale:'YlGnBu',
+        reversescale: true,
+        name: '2020',
+        showscale:false,
+     
 
     };
 
-    var heatDataMulti = [heat2018Copy, heat2018]
+    var heatDataMulti = [heat2018, heat2019, heat2020]
 
     var multiLayout = {
-        grid: {rows: 1, columns: 2, pattern: 'independent'}
+        height: 475,
+        title:{text:'Crime Reports by Year'},
+        annotations: ['test_1','test_2'],
+        grid: {
+            rows: 1,
+            columns: 3,
+        },
+        yaxis: {
+            nticks: 24,
+        },
+        font: {size:11},
+        padding: {t:0,b:0}
     };
+       
 
-    Plotly.newPlot('heat2',heatDataMulti,multiLayout);
+    Plotly.newPlot('heat2',heatDataMulti,multiLayout,config);
 
     
 });
