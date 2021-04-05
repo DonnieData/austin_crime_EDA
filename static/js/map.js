@@ -37,7 +37,7 @@ L.control.layers(baseMap, overlays).addTo(map);
 //Data
 
 //load data 
-d3.csv("https://raw.githubusercontent.com/DonnieData/austin_crime_EDA/main/loc_frame.csv").then(function(data) {
+d3.csv("https://raw.githubusercontent.com/DonnieData/austin_crime_EDA/main/test_data/loc_frame.csv").then(function(data) {
     var locData =  data;
 
     //test output 

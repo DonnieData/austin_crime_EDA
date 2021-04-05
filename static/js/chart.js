@@ -1,9 +1,9 @@
 // Add console.log to check to see if our code is working.
 console.log("working");
 
-//load data 
-const url = 'https://raw.githubusercontent.com/DonnieData/austin_crime_EDA/main/test_data/all_crime_day_transposed.csv'
-d3.csv(url).then(function(data) {
+//Heatmaps/load data 
+const url1 = 'https://raw.githubusercontent.com/DonnieData/austin_crime_EDA/main/test_data/all_crime_day_transposed.csv'
+d3.csv(url1).then(function(data) {
     var grData =  data.reverse(); 
 
     //console.log(grData[3])
@@ -32,8 +32,7 @@ d3.csv(url).then(function(data) {
         type: 'heatmap',
         hoverongaps: false,
         colorscale:'YlGnBu',
-        reversescale: true
-     
+        reversescale: true 
     }];
 
     //place holder 
@@ -42,7 +41,7 @@ d3.csv(url).then(function(data) {
         yaxis: {
             nticks: 24
         },
-       }
+    }
     
     var config = {responsive: true}
 
@@ -75,7 +74,6 @@ d3.csv(url).then(function(data) {
         colorscale:'YlGnBu',
         reversescale: true,
         name: '2018'
-
     };
 
     var heat2019 = {
@@ -90,7 +88,6 @@ d3.csv(url).then(function(data) {
         reversescale: true,
         name: '2019',
         showscale: false,
-    
     };
 
     var heat2020 = {
@@ -104,9 +101,7 @@ d3.csv(url).then(function(data) {
         colorscale:'YlGnBu',
         reversescale: true,
         name: '2020',
-        showscale:false,
-     
-
+        showscale:false
     };
 
     var heatDataMulti = [heat2018, heat2019, heat2020]
@@ -127,9 +122,62 @@ d3.csv(url).then(function(data) {
     };
        
 
-    Plotly.newPlot('heat2',heatDataMulti,multiLayout,config);
-
-    
+    Plotly.newPlot('heat2',heatDataMulti,multiLayout,config);  
 });
 
 
+//Line Chart load data 
+const url2 = 'https://raw.githubusercontent.com/DonnieData/austin_crime_EDA/main/test_data/offense_by_date.csv'
+d3.csv(url2).then(function(data) {
+
+    var data18 = data.filter(i => (new Date(i.date).getFullYear() == 2018));
+    var data19 = data.filter(i =>(new Date(i.date).getFullYear() == 2019));
+    var data20 = data.filter(i => (new Date(i.date).getFullYear() == 2020));
+
+    console.log(data18[0])
+
+   var trace18 = {
+    type: "scatter",
+    mode: "lines",
+    name: '2018',
+    x: data18.map(i => i.date),
+    y: data18.map(i => i.count),
+    line: {color: '#17BECF'}
+  }
+
+  
+  var trace19 = {
+    type: "scatter",
+    mode: "lines",
+    name: '2019',
+    x: data19.map(i => i.date),
+    y: data19.map(i => i.count),
+    line: {color: '#17BECF'}
+  }
+
+  var trace20 = {
+    type: "scatter",
+    mode: "lines",
+    name: '2020',
+    x: data20.map(i => i.date),
+    y: data20.map(i => i.count),
+    line: {color: '#17BECF'}
+  }
+
+  var data = [trace18,trace19,trace20];
+  
+  var layout = {
+    title: 'Time Series',
+    autorange: true,
+    type: 'linear'
+  };
+
+ Plotly.newPlot('line1', data, layout);
+
+});
+
+//Plotly.d3.csv("https://raw.githubusercontent.com/plotly/datasets/master/finance-charts-apple.csv", function(err, rows){
+
+//  function unpack(rows, key) {
+///  return rows.map(function(row) { return row[key]; });
+//}})
