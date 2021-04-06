@@ -2,7 +2,7 @@
 console.log("working");
 
 //Heatmaps/load data 
-const url1 = 'https://raw.githubusercontent.com/DonnieData/austin_crime_EDA/main/test_data/all_crime_day_transposed.csv'
+const url1 = 'https://raw.githubusercontent.com/DonnieData/austin_crime_EDA/main/datasets/all_crime_day_transposed.csv'
 d3.csv(url1).then(function(data) {
     var grData =  data.reverse(); 
 
@@ -122,44 +122,47 @@ d3.csv(url1).then(function(data) {
     };
        
 
-    Plotly.newPlot('heat2',heatDataMulti,multiLayout,config);  
+    Plotly.newPlot('heat1',heatDataMulti,multiLayout,config);  
 });
 
 
 //Line Chart load data 
-const url2 = 'https://raw.githubusercontent.com/DonnieData/austin_crime_EDA/main/test_data/offense_by_date.csv'
+const url2 = 'https://raw.githubusercontent.com/DonnieData/austin_crime_EDA/main/datasets/offense_by_month.csv'
 d3.csv(url2).then(function(data) {
 
-    var data18 = data.filter(i => (new Date(i.date).getFullYear() == 2018));
-    var data19 = data.filter(i =>(new Date(i.date).getFullYear() == 2019));
-    var data20 = data.filter(i => (new Date(i.date).getFullYear() == 2020));
+    var data18 = data.filter(i => (i.year == 2018));
+    var data19 = data.filter(i => (i.year == 2019));
+    var data20 = data.filter(i => (i.year == 2020));
 
-    console.log(data18[0])
+    console.log(data[0]['year'])
+    console.log(data18)
+
+    //map(i => {if (i.year == "2018"){return i.day }});
 
    var trace18 = {
     type: "scatter",
     mode: "lines",
     name: '2018',
-    x: data18.map(i => i.date),
+    x: data18.map(i => i.month),
     y: data18.map(i => i.count),
     line: {color: '#17BECF'}
   }
 
-  
   var trace19 = {
     type: "scatter",
     mode: "lines",
     name: '2019',
-    x: data19.map(i => i.date),
+    x: data19.map(i => i.month),
     y: data19.map(i => i.count),
-    line: {color: '#17BECF'}
+    line: {color: 'black'}
   }
 
-  var trace20 = {
+
+   var trace20 = {
     type: "scatter",
     mode: "lines",
     name: '2020',
-    x: data20.map(i => i.date),
+    x: data20.map(i => i.month),
     y: data20.map(i => i.count),
     line: {color: '#17BECF'}
   }
@@ -167,17 +170,30 @@ d3.csv(url2).then(function(data) {
   var data = [trace18,trace19,trace20];
   
   var layout = {
+    height: 380,
     title: 'Time Series',
-    autorange: true,
-    type: 'linear'
+    xaxis: {autorange: true,
+        rangeslider: true
+        }
   };
 
- Plotly.newPlot('line1', data, layout);
+  var config = {responsive: true}
+ Plotly.newPlot('line1', data, layout, config);
 
 });
 
-//Plotly.d3.csv("https://raw.githubusercontent.com/plotly/datasets/master/finance-charts-apple.csv", function(err, rows){
+//Treemap 
+//const url2 = 'https://raw.githubusercontent.com/DonnieData/austin_crime_EDA/main/datasets/offense_by_month.csv'
+//d3.csv(url2).then(function(data) {
 
-//  function unpack(rows, key) {
-///  return rows.map(function(row) { return row[key]; });
-//}})
+
+//});
+
+data = [{
+    type: "treemap",
+    labels: ["Eve", "Cain", "Seth", "Enos", "Noam", "Abel", "Awan", "Enoch", "Azura"],
+    parents: ["", "Eve", "Eve", "Seth", "Seth", "Eve", "Eve", "Awan", "Eve" ]
+}]
+
+
+Plotly.newPlot('tree1', data)
