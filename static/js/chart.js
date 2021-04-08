@@ -189,10 +189,16 @@ d3.csv(url2).then(function(data) {
 
 //});
 
-data = [{
-    type: "treemap",
-    labels: ["Eve", "Cain", "Seth", "Enos", "Noam", "Abel", "Awan", "Enoch", "Azura"],
-    parents: ["", "Eve", "Eve", "Seth", "Seth", "Eve", "Eve", "Awan", "Eve" ]
+var values = ["30", "12", "13", "14", "15", "20", "30"]
+var labels = ["A1", "A2", "A3", "A4", "A5", "B1", "B2"]
+var parents = ["", "", "", "", "", "", ""]
+
+var data = [{
+  type: 'treemap',
+  values: values,
+  labels: labels,
+  parents: parents,
+  marker: {colorscale: 'Blues'}
 }]
 
 
