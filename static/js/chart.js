@@ -204,7 +204,7 @@ var data = [{
 
 Plotly.newPlot('treetest', data)
 
-var url3 = 'https://raw.githubusercontent.com/DonnieData/austin_crime_EDA/main/datasets/offense_cat_count.csv'
+var url3 = 'https://raw.githubusercontent.com/DonnieData/austin_crime_EDA/main/datasets/offense_cat_countv2.csv'
 d3.csv(url3).then(function(data) {
   
 
@@ -219,7 +219,7 @@ d3.csv(url3).then(function(data) {
         values: values,
         labels: labels,
         parents: parents,
-        marker: {colorscale: 'Blues'}
+        name:'test'
       }]
 
      Plotly.newPlot('tree1',traceData)
