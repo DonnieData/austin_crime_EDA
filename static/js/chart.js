@@ -2,7 +2,7 @@
 console.log("working");
 
 //Heatmaps/load data 
-const url1 = 'https://raw.githubusercontent.com/DonnieData/austin_crime_EDA/main/datasets/all_crime_day_transposed.csv'
+var url1 = 'https://raw.githubusercontent.com/DonnieData/austin_crime_EDA/main/datasets/all_crime_day_transposed.csv'
 d3.csv(url1).then(function(data) {
     var grData =  data.reverse(); 
 
@@ -127,7 +127,7 @@ d3.csv(url1).then(function(data) {
 
 
 //Line Chart load data 
-const url2 = 'https://raw.githubusercontent.com/DonnieData/austin_crime_EDA/main/datasets/offense_by_month.csv'
+var url2 = 'https://raw.githubusercontent.com/DonnieData/austin_crime_EDA/main/datasets/offense_by_month.csv'
 d3.csv(url2).then(function(data) {
 
     var data18 = data.filter(i => (i.year == 2018));
@@ -135,7 +135,7 @@ d3.csv(url2).then(function(data) {
     var data20 = data.filter(i => (i.year == 2020));
 
     console.log(data[0]['year'])
-    console.log(data18)
+   
 
     //map(i => {if (i.year == "2018"){return i.day }});
 
@@ -178,12 +178,12 @@ d3.csv(url2).then(function(data) {
   };
 
   var config = {responsive: true}
- Plotly.newPlot('line1', data, layout, config);
+Plotly.newPlot('line1', data, layout, config);
 
 });
 
 //Treemap 
-//const url2 = 'https://raw.githubusercontent.com/DonnieData/austin_crime_EDA/main/datasets/offense_by_month.csv'
+//var url2 = 'https://raw.githubusercontent.com/DonnieData/austin_crime_EDA/main/datasets/offense_by_month.csv'
 //d3.csv(url2).then(function(data) {
 
 
@@ -202,4 +202,25 @@ var data = [{
 }]
 
 
-Plotly.newPlot('tree1', data)
+Plotly.newPlot('treetest', data)
+
+var url3 = 'https://raw.githubusercontent.com/DonnieData/austin_crime_EDA/main/datasets/offense_cat_count.csv'
+d3.csv(url3).then(function(data) {
+  
+
+    var values = data.map(i => i.incident_count)
+    var labels = data.map(i=> i.offense_type)
+    var parents = data.map(i => i.parent)
+
+    console.log(parents)
+
+    var traceData = [{
+        type: 'treemap',
+        values: values,
+        labels: labels,
+        parents: parents,
+        marker: {colorscale: 'Blues'}
+      }]
+
+     Plotly.newPlot('tree1',traceData)
+});

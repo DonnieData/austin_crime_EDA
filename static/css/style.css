@@ -5,6 +5,15 @@
   margin: 0;
 }
 
+#treetest {
+  /* for responsiveness with plotly, strict parameters are needed, and for overlfow*/
+  overflow-y: auto;
+  /* set to auto, chart should fit in div, if not scroll bar display*/
+  overflow-x: hidden;
+  display: inline-block;
+  height: 500px;
+}
+
 #tree1 {
   /* for responsiveness with plotly, strict parameters are needed, and for overlfow*/
   overflow-y: auto;
