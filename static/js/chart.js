@@ -212,15 +212,27 @@ d3.csv(url3).then(function(data) {
     var labels = data.map(i=> i.offense_type)
     var parents = data.map(i => i.parent)
 
-    console.log(parents)
+    var subValues = [2000,1000,7000]
+    var subLabels = ['2018','2019','2020']
+    var subParents = ['BURGLARY OF VEHICLE','BURGLARY OF VEHICLE','BURGLARY OF VEHICLE']
+    
+    var traceValues = values.concat(subValues)
+    var traceLabels = labels.concat(subLabels)
+    var traceParents = parents.concat(subParents)
+
+    console.log(traceValues)
 
     var traceData = [{
         type: 'treemap',
-        values: values,
-        labels: labels,
-        parents: parents,
-        name:'test'
-      }]
+        values: traceValues ,
+        labels: traceLabels ,
+        parents: traceParents 
+    }] 
 
-     Plotly.newPlot('tree1',traceData)
+    var layout = {
+        height: 500,
+      
+    }
+    var config = {responsive: true}
+     Plotly.newPlot('tree1',traceData,layout,config)
 });
