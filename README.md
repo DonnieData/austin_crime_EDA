@@ -15,8 +15,21 @@ Since this project is foccusing on crime on a yearly basis, only data for comple
 
 
 ## Project Stages 
-### Extraction & Loading 
-ETL Pipeline 
+### Data ETL (Extrat, Transform & Load) 
+A custom function has been built to automate all steps of the data ETL process between the public austin dataabase and my local Postgre database. 
+The function takes in 3 arguments: 
+- api_endpoint (required)
+- new_database_name (required)
+- api_parameters(optional) 
+
+Once ran with the necessary arguments, the function peroforms an api request with the provided endpoint url. 
+The data is then parsed from json to a tabular format as pandas dataframe. 
+Several cleanng and transforming prcoesses are performed, including changing data types. 
+
+The data is then split into separte dataframes to reflect the database schema/erd whis has been defined to
+
+A data ETL pipeline is created which 
+An ETL Pipeline is created by defining a custom function which compiles  
 Python script which extracts data via api, then cleans, transforms, and creates a database in which the data is loaded into.
 
 ### Exploration and Transformation 
