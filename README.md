@@ -26,11 +26,9 @@ Once ran with the necessary arguments, the function peroforms an api request wit
 The data is then parsed from json to a tabular format as pandas dataframe. 
 Several cleanng and transforming prcoesses are performed, including changing data types. 
 
-The data is then split into separte dataframes to reflect the database schema/erd whis has been defined to
+The data is then split into separte dataframes to reflect the database schema/ER Model whis has been defined to ensure a logical structure for the many-to-one relationships.
 
-A data ETL pipeline is created which 
-An ETL Pipeline is created by defining a custom function which compiles  
-Python script which extracts data via api, then cleans, transforms, and creates a database in which the data is loaded into.
+#### Database 
 
 ### Exploration and Transformation 
 
