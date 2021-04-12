@@ -20,7 +20,7 @@
   /* set to auto, chart should fit in div, if not scroll bar display*/
   overflow-x: hidden;
   display: inline-block;
-  height: 500px;
+  height: 525px;
 }
 
 #heat1 {
@@ -34,7 +34,7 @@
   overflow-y: auto;
   overflow-x: hidden;
   display: inline-block;
-  height: 400px;
+  height: 370px;
 }
 
 /* legend created through javascript, not hardcoded in index */
@@ -104,7 +104,7 @@ body {
 
 nav {
   
-  border-bottom: 2px solid #A4CBE5;
+  border-bottom: 1px solid #A4CBE5;
 }
 
 #note1 {

@@ -137,8 +137,6 @@ d3.csv(url2).then(function(data) {
     console.log(data[0]['year'])
    
 
-    //map(i => {if (i.year == "2018"){return i.day }});
-
    var trace18 = {
     type: "scatter",
     mode: "lines",
@@ -170,11 +168,16 @@ d3.csv(url2).then(function(data) {
   var data = [trace18,trace19,trace20];
   
   var layout = {
-    height: 380,
+    height: 350,
     title: 'Time Series',
     xaxis: {autorange: true,
         rangeslider: true
-        }
+        },
+         margin: {
+            r:50,
+            l:60,
+            t:60,
+            b:30} 
   };
 
   var config = {responsive: true}
@@ -183,33 +186,16 @@ Plotly.newPlot('line1', data, layout, config);
 });
 
 //Treemap 
-//var url2 = 'https://raw.githubusercontent.com/DonnieData/austin_crime_EDA/main/datasets/offense_by_month.csv'
-//d3.csv(url2).then(function(data) {
 
 
-//});
-
-var values = ["30", "12", "13", "14", "15", "20", "30"]
-var labels = ["A1", "A2", "A3", "A4", "A5", "B1", "B2"]
-var parents = ["", "", "", "", "", "", ""]
-
-var data = [{
-  type: 'treemap',
-  values: values,
-  labels: labels,
-  parents: parents,
-  marker: {colorscale: 'Blues'}
-}]
 
 
-Plotly.newPlot('treetest', data)
-
-var url3 = 'https://raw.githubusercontent.com/DonnieData/austin_crime_EDA/main/datasets/offense_cat_countv2.csv'
+var url3 = 'https://raw.githubusercontent.com/DonnieData/austin_crime_EDA/main/datasets/tree_offense_data.csv'
 d3.csv(url3).then(function(data) {
   
 
-    var values = data.map(i => i.incident_count)
-    var labels = data.map(i=> i.offense_type)
+    var values = data.map(i => i.value)
+    var labels = data.map(i=> i.label)
     var parents = data.map(i => i.parent)
 
     var subValues = [2000,1000,7000]
@@ -224,15 +210,21 @@ d3.csv(url3).then(function(data) {
 
     var traceData = [{
         type: 'treemap',
-        values: traceValues ,
-        labels: traceLabels ,
-        parents: traceParents 
+        values: values ,
+        labels: labels ,
+        parents: parents,
+        texttemplate : "Year: %{label}<br>Approximate Reports: %{value}"
     }] 
 
     var layout = {
         height: 500,
-      
+        margin: {
+            r:40,
+            l:40,
+            t:40,
+            b:40} 
     }
+    
     var config = {responsive: true}
      Plotly.newPlot('tree1',traceData,layout,config)
 });
