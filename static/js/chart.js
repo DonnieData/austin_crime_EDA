@@ -118,7 +118,11 @@ d3.csv(url1).then(function(data) {
             nticks: 24,
         },
         font: {size:11},
-        padding: {t:0,b:0}
+        margin: {
+            r:50,
+            l:60,
+            t:60,
+            b:30} 
     };
        
 
@@ -217,11 +221,11 @@ d3.csv(url3).then(function(data) {
     }] 
 
     var layout = {
-        height: 500,
+        height: 450,
         margin: {
-            r:40,
-            l:40,
-            t:40,
+            r:20,
+            l:20,
+            t:20,
             b:40} 
     }
     
