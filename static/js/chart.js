@@ -216,7 +216,7 @@ d3.csv(url3).then(function(data) {
             l:15,
             t:30,
             b:40} ,
-        title: 'Offense Types by Occurence'
+        title: '<b>Offense Types by Occurence</b>'
     }
     
     var config = {responsive: true}
@@ -246,7 +246,7 @@ d3.csv(url4).then(function(data) {
             l:15,
             t:30,
             b:40} ,
-        title: 'Offense Types by Occurence'
+        title: '<b>Offense Types by Occurence</b>'
     }
 
     var config = {responsive: true}
