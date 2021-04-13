@@ -224,9 +224,10 @@ d3.csv(url3).then(function(data) {
         height: 450,
         margin: {
             r:20,
-            l:20,
-            t:20,
-            b:40} 
+            l:15,
+            t:30,
+            b:40} ,
+            title: 'Offense Types by Occurence'
     }
     
     var config = {responsive: true}
