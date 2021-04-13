@@ -197,20 +197,9 @@ Plotly.newPlot('line1', data, layout, config);
 var url3 = 'https://raw.githubusercontent.com/DonnieData/austin_crime_EDA/main/datasets/tree_offense_data.csv'
 d3.csv(url3).then(function(data) {
   
-
     var values = data.map(i => i.value)
     var labels = data.map(i=> i.label)
     var parents = data.map(i => i.parent)
-
-    var subValues = [2000,1000,7000]
-    var subLabels = ['2018','2019','2020']
-    var subParents = ['BURGLARY OF VEHICLE','BURGLARY OF VEHICLE','BURGLARY OF VEHICLE']
-    
-    var traceValues = values.concat(subValues)
-    var traceLabels = labels.concat(subLabels)
-    var traceParents = parents.concat(subParents)
-
-    console.log(traceValues)
 
     var traceData = [{
         type: 'treemap',
@@ -227,9 +216,39 @@ d3.csv(url3).then(function(data) {
             l:15,
             t:30,
             b:40} ,
-            title: 'Offense Types by Occurence'
+        title: 'Offense Types by Occurence'
     }
     
     var config = {responsive: true}
-     Plotly.newPlot('tree1',traceData,layout,config)
+    Plotly.newPlot('tree1',traceData,layout,config)
+});
+
+// Location Treemap 
+var url4 = 'https://raw.githubusercontent.com/DonnieData/austin_crime_EDA/main/datasets/tree_location_data.csv'
+d3.csv(url4).then(function(data) {
+
+    var values = data.map(i => i.value)
+    var labels = data.map(i=> i.label)
+    var parents = data.map(i => i.parent)
+
+    var traceData = [{
+        type: 'treemap',
+        values: values ,
+        labels: labels ,
+        parents: parents,
+        texttemplate : "Year: %{label}<br>Approximate Reports: %{value}"
+    }] 
+
+    var layout = {
+        height: 450,
+        margin: {
+            r:20,
+            l:15,
+            t:30,
+            b:40} ,
+        title: 'Offense Types by Occurence'
+    }
+
+    var config = {responsive: true}
+    Plotly.newPlot('tree2',traceData,layout,config)
 });
