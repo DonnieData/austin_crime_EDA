@@ -36,7 +36,11 @@
   overflow-y: auto;
   overflow-x: hidden;
   display: inline-block;
-  height: 500px;
+  height: 400px;
+}
+
+#heatinfo { 
+  background-color: #EEF0F0;
 }
 
 #line1 {
@@ -45,10 +49,6 @@
   display: inline-block;
   height: 370px;
 }
-
-
-
-
 
 
 body {

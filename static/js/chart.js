@@ -107,8 +107,8 @@ d3.csv(url1).then(function(data) {
     var heatDataMulti = [heat2018, heat2019, heat2020]
 
     var multiLayout = {
-        height: 475,
-        title:{text:'Crime Reports by Year'},
+        height: 390,
+        title:{text:'<b>Crime Reports by Year</b>'},
         annotations: ['test_1','test_2'],
         grid: {
             rows: 1,
@@ -117,11 +117,11 @@ d3.csv(url1).then(function(data) {
         yaxis: {
             nticks: 24,
         },
-        font: {size:11},
+        font: {size:10},
         margin: {
             r:50,
             l:60,
-            t:60,
+            t:50,
             b:30} 
     };
        
