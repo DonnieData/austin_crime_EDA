@@ -20,7 +20,7 @@
   /* set to auto, chart should fit in div, if not scroll bar display*/
   overflow-x: hidden;
   display: inline-block;
-  height: 480px;
+  height: 440px;
 }
 
 #tree2 {
@@ -29,7 +29,7 @@
   /* set to auto, chart should fit in div, if not scroll bar display*/
   overflow-x: hidden;
   display: inline-block;
-  height: 480px;
+  height: 440px;
 }
 
 #heat1 {

@@ -189,10 +189,7 @@ Plotly.newPlot('line1', data, layout, config);
 
 });
 
-//Treemap 
-
-
-
+//Crime Type Treemap 
 
 var url3 = 'https://raw.githubusercontent.com/DonnieData/austin_crime_EDA/main/datasets/tree_offense_data.csv'
 d3.csv(url3).then(function(data) {
@@ -210,12 +207,12 @@ d3.csv(url3).then(function(data) {
     }] 
 
     var layout = {
-        height: 450,
+        height: 425,
         margin: {
             r:20,
             l:15,
             t:30,
-            b:40} ,
+            b:10} ,
         title: '<b>Offense Types by Occurence</b>'
     }
     
@@ -240,13 +237,13 @@ d3.csv(url4).then(function(data) {
     }] 
 
     var layout = {
-        height: 450,
+        height: 425,
         margin: {
             r:20,
             l:15,
             t:30,
-            b:40} ,
-        title: '<b>Offense Types by Occurence</b>'
+            b:10} ,
+        title: '<b>Offense Location Types by Occurence</b>'
     }
 
     var config = {responsive: true}
