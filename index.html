@@ -22,7 +22,7 @@
 <body>
     
     
-    <nav class="navbar navbar-expand-md navbar-light bg-light shadow-sm p-1" >
+    <nav class="navbar navbar-expand-md navbar-light bg-light shadow-sm p-0 pl-3" >
         <a class="navbar-brand" href="#"><b>Austin Crime EDA</b></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -35,17 +35,27 @@
           </div>
         </div>
       </nav>
-      <nav class="navbar sticky-top navbar-expand-md navbar-light bg-light shadow-sm p-1"></nav>
+    <nav class="navbar sticky-top navbar-expand-md navbar-light bg-light shadow-sm p-1"></nav>
 
+    <!--bootstrap container-->
     <div class="container">
+
         <div class="row justify-content-center align-items-center">
-            <div class="col-md-10 shadow-sm p-2 mb-5 bg-white rounded" id="infoblock1" style="margin-top: 90px;"><h6 id="note1">Lorem ipsum dolor sit amet, consectetur adipiscing elit </h6> <br>
-                <p id="para1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Felis eget velit aliquet sagittis id consectetur purus ut faucibus. Magna etiam tempor orci eu. Nullam ac tortor vitae purus faucibus. Dolor magna eget est lorem ipsum dolor sit amet. Condimentum lacinia quis vel eros donec.
-                 <br><br>
+            <div class="col-md-11 shadow p-3 m-2 mt-4 rounded" id="info-box">
+                <h6>Analysis Overview</h6>
+                <br>
+                
             </div>
         </div>
 
+        <div class="row justify-content-center align-items-center">
+            <div class="col-md-11 shadow p-3 m-2 mt-4 rounded" id="info-box">
+                <h6>About The Data </h6>
+         
+            </div>
+        </div>
+    
+        
         <div class="row justify-content-center align-items-center">
             <div class="col-md-11 shadow p-2 pb-0 mb-5 bg-white rounded " id="line1">   
             </div>
@@ -68,15 +78,18 @@
         <div class="row justify-content-center align-items-center">
             <div class="col-md-11 shadow p-1 m-3 bg-white rounded" id="heat1"></div>
         </div>
+
         <div class="row justify-content-center align-items-center">
-            <div class="col-md-11 shadow p-3 m-2 rounded" id="heatinfo">
-                <h6>Insights</h6>
+            <div class="col-md-5 shadow p-3 mr-1 rounded" id="info-box">
+                <h6>Reports by year</h6>
                 <ul>
                 All three years (2018,2019,2020) show similiar trends for reproted <br>crimes by time of day and day of the week<br> 
                 
                 <br>
                 [numbers on percentage of hot spots]
             </ul>
+            </div>
+            <div class="col-md-6 shadow p-3 ml-1 rounded" id="info-box">
             </div>
         </div>
 
@@ -92,6 +105,18 @@
         <!--Crime Location Treemap-->
         <div class="row justify-content-center align-items-center">
             <div class="col-md-11 shadow p-1 m-3 mb-5 bg-white rounded" id="tree2"></div>
+        </div>
+
+        <div class="row justify-content-center align-items-center">
+            <div class="col-md-11 shadow p-3 m-2 rounded" id="info-box">
+                <h6>Insights</h6>
+                <ul>
+                Of the 301 different types of offenses registered in the database for 2018-2020,<br> 
+                the top 10 types account for roughly 55% of all reports. <br> 
+ 
+            
+            </ul>
+            </div>
         </div>
 
         <div class="row justify-content-center align-items-center">

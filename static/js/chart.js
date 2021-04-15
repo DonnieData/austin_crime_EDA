@@ -173,16 +173,18 @@ d3.csv(url2).then(function(data) {
   
   var layout = {
     height: 350,
-    title: 'Time Series',
+    title: '<b>Time Series</b>',
     xaxis: {autorange: true,
         rangeslider: true
-        },
-         margin: {
+    },
+    font: {size:10},
+    margin: {
             r:50,
             l:60,
             t:60,
-            b:30} 
-  };
+            b:30
+        },
+    };
 
   var config = {responsive: true}
 Plotly.newPlot('line1', data, layout, config);
@@ -213,7 +215,8 @@ d3.csv(url3).then(function(data) {
             l:15,
             t:30,
             b:10} ,
-        title: '<b>Offense Types by Occurence</b>'
+        title: '<b>Offense Types by Occurence</b>',
+        font: {size:10}
     }
     
     var config = {responsive: true}
@@ -243,7 +246,8 @@ d3.csv(url4).then(function(data) {
             l:15,
             t:30,
             b:10} ,
-        title: '<b>Offense Location Types by Occurence</b>'
+        title: '<b>Offense Location Types by Occurence</b>',
+        font: {size:10}
     }
 
     var config = {responsive: true}
