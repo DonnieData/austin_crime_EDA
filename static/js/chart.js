@@ -209,7 +209,7 @@ d3.csv(url3).then(function(data) {
     }] 
 
     var layout = {
-        height: 400,
+        height: 390,
         margin: {
             r:20,
             l:15,
@@ -240,7 +240,7 @@ d3.csv(url4).then(function(data) {
     }] 
 
     var layout = {
-        height: 400,
+        height: 390,
         margin: {
             r:20,
             l:15,

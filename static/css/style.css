@@ -24,7 +24,7 @@ body {
   /* set to auto, chart should fit in div, if not scroll bar display*/
   overflow-x: hidden;
   display: inline-block;
-  height: 410px;
+  height: 400px;
 }
 
 #tree2 {
@@ -33,7 +33,7 @@ body {
   /* set to auto, chart should fit in div, if not scroll bar display*/
   overflow-x: hidden;
   display: inline-block;
-  height: 410px;
+  height: 400px;
 }
 
 #heat1 {
@@ -55,10 +55,20 @@ body {
   height: 370px;
 }
 
+#divider { 
+  height: 10px;
+}
 
 
+.heatinfo {
+  height: 200px;
+}
 
-
+tr {
+  line-height: 10px;
+  min-height: 7px;
+  height: 25px;
+}
 
 #nav-main {
   
