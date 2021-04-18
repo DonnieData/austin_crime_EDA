@@ -119,7 +119,7 @@ d3.csv(url1).then(function(data) {
         margin: {
             r:50,
             l:60,
-            t:50,
+            t:40,
             b:30} 
     };
        

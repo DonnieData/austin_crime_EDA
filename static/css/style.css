@@ -40,7 +40,7 @@ body {
   overflow-y: auto;
   overflow-x: hidden;
   display: inline-block;
-  height: 400px;
+  height: 390px;
 }
 
 #info-box { 
@@ -52,6 +52,7 @@ body {
   text-align: center;
   justify-content: center;
   font-size: 13px;
+
 }
 
 
