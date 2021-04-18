@@ -48,6 +48,13 @@ body {
   font-size: 13px;
 }
 
+#info-title { 
+  text-align: center;
+  justify-content: center;
+  font-size: 13px;
+}
+
+
 #line1 {
   overflow-y: auto;
   overflow-x: hidden;
