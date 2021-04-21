@@ -35,10 +35,50 @@ L.control.layers(baseMap, overlays).addTo(map);
 
 
 //Data
+//top zipcode by top crime 
+d3.csv("https://raw.githubusercontent.com/DonnieData/austin_crime_EDA/main/datasets/crime_by_top_zip_offense.csv").then(function(data){
 
-//load data 
+    console.log(data[3])
+
+
+    function styleInfo(type){
+        return {
+        opacity: 1,
+        radius: 8,
+        color: getColor()
+        }
+    }
+
+    function getColor(type) {
+        if(type == "FAMILY DISTURBANCE") {
+            return "blue"
+        }
+        if(type == "CRIMINAL MISCHIEF") {
+            return "red"
+        }
+        if(type == "BURGLARY OF VEHICLE") {
+            return "blue"
+        }
+        if(type == "ASSAULT W/INJURY-FAM/DATE VIOL") {
+            return "orange"
+        }
+        if(type == "THEFT") {
+            return "green"
+        }
+    }
+
+    for (var i = 0; i < data.length; i++) {
+        marker = new L.circle([data[i]['latitude'], data[i]['longitude']],styleInfo(data[i]['offense_type']))
+        .bindPopup(data[i]['offense_type'])
+        .addTo(samplayer1);
+    };
+
+
+
+});
+
 d3.csv("https://raw.githubusercontent.com/DonnieData/austin_crime_EDA/main/datasets/loc_frame.csv").then(function(data) {
-    var locData =  data;
+    let locData =  data;
 
     //test output 
     //console.log(locData[0]);
@@ -61,9 +101,10 @@ d3.csv("https://raw.githubusercontent.com/DonnieData/austin_crime_EDA/main/datas
 // function to style markers
     var styleInfo = {
             opacity: 1,
-            radius: 8 
-    }
+            radius: 8
+        }
 
+    
     // loop through location object and create markers 
     for (var i = 0; i < locData.length; i++) {
         marker = new L.circle([locData[i]['latitude'], locData[i]['longitude']],styleInfo)
