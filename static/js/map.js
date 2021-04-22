@@ -19,15 +19,15 @@ let baseMap = {
 };
 
 //create overlay objects for map 
-let samplayer1 = new L.LayerGroup();
-let samplayer2 = new L.LayerGroup();
-let samplayer3 = new L.LayerGroup();
+let layer1 = new L.LayerGroup();
+let layer2 = new L.LayerGroup();
+let layer3 = new L.LayerGroup();
 
 // create refernece to overlays 
 let overlays = {
-    "sample layer 1": samplayer1,
-    "sample layer 2": samplayer2,
-    "sample layer 3": samplayer3
+    "2018": layer1,
+    "2019": layer2,
+    "2020": layer3
 };
 
 //add control to to map for user-end toggling 
@@ -36,80 +36,121 @@ L.control.layers(baseMap, overlays).addTo(map);
 
 //Data
 //top zipcode by top crime 
-d3.csv("https://raw.githubusercontent.com/DonnieData/austin_crime_EDA/main/datasets/crime_by_top_zip_offense.csv").then(function(data){
+d3.csv("https://raw.githubusercontent.com/DonnieData/austin_crime_EDA/main/datasets/top10zip_by_top5offense.csv").then(function(data){
 
-    console.log(data[3])
-
-
-    function styleInfo(type){
+    function styleInfo(type,size){
         return {
         opacity: 1,
-        radius: 8,
-        color: getColor()
+        radius: size,
+        color: getColor(type)
         }
     }
 
     function getColor(type) {
         if(type == "FAMILY DISTURBANCE") {
-            return "blue"
+            return "blue";
         }
         if(type == "CRIMINAL MISCHIEF") {
-            return "red"
+            return "red";
         }
         if(type == "BURGLARY OF VEHICLE") {
-            return "blue"
+            return "blue";
         }
         if(type == "ASSAULT W/INJURY-FAM/DATE VIOL") {
-            return "orange"
+            return "orange";
         }
         if(type == "THEFT") {
-            return "green"
+            return "green";
+        }
+        return "white";
+    }
+ 
+    for (var i = 0; i < data.length; i++) {
+        marker = new L.circle([data[i]['latitude'], data[i]['longitude']],styleInfo(data[i]['offense_type'],data[i]['count']))
+        .bindPopup(data[i]['offense_type'] +"<br>" + data[i]['count'])
+        .addTo(samplayer1);
+    };
+});
+
+d3.csv("https://raw.githubusercontent.com/DonnieData/austin_crime_EDA/main/datasets/reports_by_zip.csv").then(function(data){
+
+    function styleInfo(size){
+        return {
+        opacity: 1,
+        radius: (size/12),
         }
     }
 
+    function getColor(type) {
+        if(type == "FAMILY DISTURBANCE") {
+            return "blue";
+        }
+        if(type == "CRIMINAL MISCHIEF") {
+            return "red";
+        }
+        if(type == "BURGLARY OF VEHICLE") {
+            return "blue";
+        }
+        if(type == "ASSAULT W/INJURY-FAM/DATE VIOL") {
+            return "orange";
+        }
+        if(type == "THEFT") {
+            return "green";
+        }
+        return "white";
+    }
+ 
     for (var i = 0; i < data.length; i++) {
-        marker = new L.circle([data[i]['latitude'], data[i]['longitude']],styleInfo(data[i]['offense_type']))
-        .bindPopup(data[i]['offense_type'])
+        marker = new L.circle([data[i]['latitude'], data[i]['longitude']],styleInfo(data[i]['count']))
+        .bindPopup(data[i]['zip_code'] +"<br>" + data[i]['count'])
+        .addTo(samplayer3);
+    };
+});
+d3.csv("https://raw.githubusercontent.com/DonnieData/austin_crime_EDA/main/datasets/top10zip_by_top5offense.csv").then(function(data){
+
+    console.log(data[3])
+
+
+    function styleInfo(type,size){
+        return {
+        opacity: 1,
+        radius: 8,
+        color: getColor(type)
+        }
+    }
+
+    function getColor(type) {
+        if(type == "FAMILY DISTURBANCE") {
+            return "blue";
+        }
+        if(type == "CRIMINAL MISCHIEF") {
+            return "red";
+        }
+        if(type == "BURGLARY OF VEHICLE") {
+            return "blue";
+        }
+        if(type == "ASSAULT W/INJURY-FAM/DATE VIOL") {
+            return "orange";
+        }
+        if(type == "THEFT") {
+            return "green";
+        }
+        return "white";
+    }
+
+    //function getSize(size) {
+     //   if (size ==)
+
+   // }
+
+ 
+
+    for (var i = 0; i < data.length; i++) {
+        marker = new L.circle([data[i]['latitude'], data[i]['longitude']],styleInfo(data[i]['offense_type'],data[i]['count']))
+        .bindPopup(data[i]['offense_type'] +"<br>" + data[i]['count'])
         .addTo(samplayer1);
     };
 
 
-
-});
-
-d3.csv("https://raw.githubusercontent.com/DonnieData/austin_crime_EDA/main/datasets/loc_frame.csv").then(function(data) {
-    let locData =  data;
-
-    //test output 
-    //console.log(locData[0]);
-    //console.log(locData[16])  
-    //console.log(locData[0]['incident_report_number'])
-
-    var latLong = locData.map(function(i) {
-        return {
-            latitude: i.latitude,
-            longitude: i.longitude
-            
-        };
-    });
-    // test object structure 
-    //console.log(latLong);
-    //console.log(latLong[16])
-    //console.log(latLong[16]['latitude'])
-
-
-// function to style markers
-    var styleInfo = {
-            opacity: 1,
-            radius: 8
-        }
-
-    
-    // loop through location object and create markers 
-    for (var i = 0; i < locData.length; i++) {
-        marker = new L.circle([locData[i]['latitude'], locData[i]['longitude']],styleInfo)
-        .bindPopup(locData[i]['incident_report_number'])
-        .addTo(samplayer2);
-    };
 
 });
