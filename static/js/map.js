@@ -68,7 +68,9 @@ d3.json("https://raw.githubusercontent.com/DonnieData/austin_crime_EDA/main/data
           },
         //unpack to access feature element for styling 
         onEachFeature: function(feature, layer) {
-          layer.bindPopup(feature.properties.zipcode );
+          layer.bindPopup(feature.properties.zipcode + "<br>" + 
+                          feature.properties.crime_cat + "<br>" + 
+                          feature.properties.crime_count);
         }
     }).addTo(layer2);
 
