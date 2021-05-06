@@ -9,6 +9,11 @@ body {
   margin: 0;
 }
 
+table.mapinfo {
+  border:1px solid darkslategrey;
+
+}
+
 #treetest {
   /* for responsiveness with plotly, strict parameters are needed, and for overlfow*/
   overflow-y: auto;
