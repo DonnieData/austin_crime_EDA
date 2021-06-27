@@ -28,38 +28,68 @@ let layer6 = new L.LayerGroup();
 
 // create refernece to overlays 
 let overlays = {
-    "all": layer1,
-    "burglary of vehicle": layer2,
-    "family disturbance": layer3,
-    "theft": layer4,
-    "assault": layer5,
-    "criminal mishchief":layer6
+    "test_layer_18": layer1,
+    "2018": layer2,
+    "2019": layer3,
+    "2020": layer4,
 
 };
 
 //add control to to map for user-end toggling 
 L.control.layers(baseMap, overlays).addTo(map);
 
+var styles = {
+  outline: "thin solid gray"
+};
+$("#tstyle").css(styles);
 
-let zipcodesGeo = "https://raw.githubusercontent.com/DonnieData/austin_crime_EDA/main/datasets/austin_area_zip_codes.geojson"
+let zipcodesGeo = "https://raw.githubusercontent.com/DonnieData/austin_crime_EDA/main/datasets/new_geo_data_18.json"
 
 let zipStyle = {
     color: "#427FC8",
-    fillColor:"#E5E8E8",
-    weight: 2
+    weight: 2,
+    opacity: 1
   }
+
+  
 d3.json(zipcodesGeo).then(function(data){
     L.geoJson(data, {
         style: zipStyle,
         //unpack to access feature element for styling 
         onEachFeature: function(feature, layer) {
-          layer.bindPopup(feature.properties.zipcode );
+          layer.bindPopup("<b>Zip Code:</b> " + feature.properties.zipcode +" "+
+          "<br><br>"+
+          "<table style='outline: thin solid gray;'>"+
+          "<tr style='outline: thin solid gray;'>"+
+          "<th>"+"Offense Category" +"</th><th>"+ "Report Count" + "</th>"+
+          "</tr>"+
+          "<tr>"+
+          "<td  id='tstyle'>"+feature.properties.crime_data[0][0] +"</td><td>"+ feature.properties.crime_data[0][1] + "</td>"+
+          "</tr>"+
+          "<tr>"+
+          "<td>"+feature.properties.crime_data[1][0] +"</td><td>"+ feature.properties.crime_data[1][1] + "</td>"+
+          "</tr>"+
+          "<tr>"+
+          "<td>"+feature.properties.crime_data[2][0] +"</td><td>"+ feature.properties.crime_data[2][1] + "</td>"+
+          "</tr>"+
+          "<tr>"+
+          "<td>"+feature.properties.crime_data[3][0] +"</td><td>"+ feature.properties.crime_data[3][1] + "</td>"+
+          "</tr>"+
+          "<tr>"+
+          "<td>"+feature.properties.crime_data[4][0] +"</td><td>"+ feature.properties.crime_data[4][1] + "</td>"+
+          "</tr>"+
+          "</table>" );
         }
+
+
     }).addTo(layer1);
+
+    
 })
 
 
-d3.json("https://raw.githubusercontent.com/DonnieData/austin_crime_EDA/main/datasets/burg_geo.json").then(function(data){
+d3.json("https://raw.githubusercontent.com/DonnieData/austin_crime_EDA/main/datasets/geo_data18.json").then(function(data){
+
     L.geoJson(data, {
         style: {
             color: "#427FC8",
@@ -67,14 +97,36 @@ d3.json("https://raw.githubusercontent.com/DonnieData/austin_crime_EDA/main/data
             opacity: 1
           },
         //unpack to access feature element for styling 
+       onEachFeature: function(feature, layer) {
+          layer.bindPopup(feature.properties.zipcode);
+        },
+        
         onEachFeature: function(feature, layer) {
-          layer.bindPopup(feature.properties.zipcode + "<br>" + 
-                          feature.properties.crime_cat + "<br>" + 
-                          feature.properties.crime_count);
+          layer.bindPopup(feature.properties.zipcode);
         }
     }).addTo(layer2);
 
+    console.log(data['features'][0]['properties']['zipcode'])
+
+    var info18; 
+
+
+    d3.json("https://raw.githubusercontent.com/DonnieData/austin_crime_EDA/main/datasets/new_geo_data_18.json").then(function(dataInfo){
+
+      //console.log(data['features'][0]['properties']['zipcode'])
+     // console.log(dataInfo[data['features'][0]['properties']['zipcode']])
+
+      console.log(data['features'][0]['properties']['crime_data'])
+      console.log(data['features'][0]['properties']['crime_data'][0])
+      console.log(data['features'][0]['properties']['crime_data'][0][0])
+      console.log(data['features'][0]['properties']['crime_data'][0][1])
+
+     //info18 = dataInfo;
+
+    });
+
 })
+
 
 d3.json("https://raw.githubusercontent.com/DonnieData/austin_crime_EDA/main/datasets/family_zip_geo.json").then(function(data){
     L.geoJson(data, {
@@ -106,34 +158,6 @@ d3.json("https://raw.githubusercontent.com/DonnieData/austin_crime_EDA/main/data
 
 })
 
-d3.json("https://raw.githubusercontent.com/DonnieData/austin_crime_EDA/main/datasets/assault_geo.json").then(function(data){
-    L.geoJson(data, {
-        style: {
-            color: "#427FC8",
-            weight: 3,
-            opacity: 1
-          },
-        //unpack to access feature element for styling 
-        onEachFeature: function(feature, layer) {
-          layer.bindPopup(feature.properties.zipcode );
-        }
-    }).addTo(layer5);
 
-})
-
-d3.json("https://raw.githubusercontent.com/DonnieData/austin_crime_EDA/main/datasets/crim_mis_geo.json").then(function(data){
-    L.geoJson(data, {
-        style: {
-            color: "#427FC8",
-            weight: 3,
-            opacity: 1
-          },
-        //unpack to access feature element for styling 
-        onEachFeature: function(feature, layer) {
-          layer.bindPopup(feature.properties.zipcode );
-        }
-    }).addTo(layer6);
-
-})
 
 

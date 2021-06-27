@@ -136,7 +136,7 @@ d3.csv(url2).then(function(data) {
     var data19 = data.filter(i => (i.year == 2019));
     var data20 = data.filter(i => (i.year == 2020));
 
-    console.log(data[0]['year'])
+    console.log(data[0]);
    
 
    var trace18 = {
