@@ -66,7 +66,14 @@ table.mapinfo {
   overflow-y: auto;
   overflow-x: hidden;
   display: inline-block;
-  height: 370px;
+  height: 350px;
+}
+
+#line2 {
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: inline-block;
+  height: 350px;
 }
 
 #divider { 

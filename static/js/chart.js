@@ -23,30 +23,7 @@ d3.csv(url1).then(function(data) {
    // console.log(hour)
     var year = grData.map(function(i){
         return i.year
-    });
-
-    var heatData = [{
-        z: countGr,
-        x: day, 
-        y: hour,
-        type: 'heatmap',
-        hoverongaps: false,
-        colorscale:'YlGnBu',
-        reversescale: true 
-    }];
-
-    //place holder 
-    var heatlayout = {
-        height: 525,
-        yaxis: {
-            nticks: 24
-        },
-    }
-    
-    var config = {responsive: true}
-
-    Plotly.newPlot('heat1', heatData, heatlayout, config);
-
+    })
 
     // heat map subplots 
     console.log(typeof grData[3]['year'])
@@ -122,7 +99,8 @@ d3.csv(url1).then(function(data) {
             t:40,
             b:30} 
     };
-       
+
+    var config = {responsive: true}
 
     Plotly.newPlot('heat1',heatDataMulti,multiLayout,config);  
 });
@@ -188,6 +166,57 @@ d3.csv(url2).then(function(data) {
 Plotly.newPlot('line1', data, layout, config);
 
 });
+
+
+//Time series 
+var url2 = 'https://raw.githubusercontent.com/DonnieData/austin_crime_EDA/main/datasets/offense_by_date.csv'
+d3.csv(url2).then(function(data) {
+
+
+    console.log(data[0]);
+   
+
+   var trace = {
+    type: "scatter",
+    mode: "lines",
+    name: '2018',
+    x: data.map(i => i.date),
+    y: data.map(i => i.count),
+    line: {color: '#17BECF'}
+  }
+
+ 
+
+
+  var data = [trace];
+  
+  var layout = {
+    height: 350,
+    title: '<b>Time Series</b>',
+    xaxis: {autorange: true,
+        rangeslider: true
+    },
+    font: {size:10},
+    margin: {
+            r:50,
+            l:60,
+            t:60,
+            b:30
+        },
+    };
+
+  var config = {responsive: true}
+Plotly.newPlot('line2', data, layout, config);
+
+});
+
+
+
+
+
+
+
+
 
 //Crime Type Treemap 
 
