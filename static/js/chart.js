@@ -173,14 +173,15 @@ var url2 = 'https://raw.githubusercontent.com/DonnieData/austin_crime_EDA/main/d
 d3.csv(url2).then(function(data) {
 
 
-    console.log(data[0]);
+    console.log(typeof  data[0]['date']);
    
 
    var trace = {
     type: "scatter",
     mode: "lines",
     name: '2018',
-    x: data.map(i => i.date),
+    // convert date string into date  datatype
+    x: data.map(i => Date.parse(i.date)),
     y: data.map(i => i.count),
     line: {color: '#17BECF'}
   }
@@ -193,8 +194,27 @@ d3.csv(url2).then(function(data) {
   var layout = {
     height: 350,
     title: '<b>Time Series</b>',
-    xaxis: {autorange: true,
-        rangeslider: true
+    xaxis: {
+        autorange: true,
+        
+        rangeselector: {buttons: [
+            {
+              count: 1,
+              label: '1m',
+              step: 'month',
+              stepmode: 'backward'
+            },
+            {
+              count: 6,
+              label: '6m',
+              step: 'month',
+              stepmode: 'backward'
+            },
+            {step: 'all'}
+          ]},
+        rangeslider:true,
+        type: 'date'
+      
     },
     font: {size:10},
     margin: {
@@ -203,6 +223,10 @@ d3.csv(url2).then(function(data) {
             t:60,
             b:30
         },
+        yaxis: {
+            autorange: true,
+            type: 'linear'
+          }    
     };
 
   var config = {responsive: true}
