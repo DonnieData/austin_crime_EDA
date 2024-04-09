@@ -149,7 +149,7 @@ d3.csv(url2).then(function(data) {
   
   var layout = {
     height: 330,
-    title: '<b>Crime reprots Year over Year</b>',
+    title: '<b>Incident Reports by month (Year Comparison)</b>',
     xaxis: {autorange: true,
         rangeslider: true
     },
@@ -193,7 +193,7 @@ d3.csv(url2).then(function(data) {
   
   var layout = {
     height: 330,
-    title: '<b>Crime Reports 2018-2020 (Continuous)</b>',
+    title: '<b>Incident Reports 2018-2020 (Continuous)</b>',
     xaxis: {
         autorange: true,
         
